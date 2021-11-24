@@ -28,49 +28,39 @@
 
     if (lower === false && upper === false && special === false && digits === false) {
       alert ("Must choose One of these.")
-  
-      var lower =  confirm("Would you like lowercase letters")
-      var upper = confirm("Would you like UPPERCASE Letters?")
-      var special = confirm("Would you like Special Symbols?")
-      var digits = confirm("Would you like Numbers?")
-
 
     return ""
   }
 
     var randomCode = ""  
-    
-    for (var i = 0; i < confirmLength; i++) {
+    var passwordCharacters = [];
+    if (lower) {
+      passwordCharacters = passwordCharacters.concat(lowerCase)
+    }
+    if (upper) {
+      passwordCharacters = passwordCharacters.concat(upperCase)
+    }
+    if (special) {
+      passwordCharacters = passwordCharacters.concat(specialSymbols)
+    }
+    if (digits) {
+      passwordCharacters = passwordCharacters.concat(numbers)
+    }
+    console.log(passwordCharacters)
+
+    for (var i = 0; i < passwordLength; i++) {
       randomCode = randomCode + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
       console.log(randomCode)
     }
-  
 
-  var storageX = {
-    passwordLength: passwordLength,
-    lower: lower,
-    upper: upper,
-    digits: digits,
-    special: special,
-  };
-
-  return storageX
-
-
-  //var passwordString = "this is eventually going to be the password"
-  //return passwordString
+  return randomCode;
 }
 
-function generatePassword() {
-  var allChars = [];
-  var resultPass = "";
-}
-// need to create a generate password function inside this function create empty arrays  var resolte = [] 
 
 
 function writePassword() {
   // create a variable to get a callback that is the generated password
-  var password = generatePassword();
+  var password = runningForm();
   var passwordText = document.getElementById("password");
 
   passwordText.value = password;
